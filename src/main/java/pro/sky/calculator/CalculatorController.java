@@ -2,23 +2,25 @@ package pro.sky.calculator;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.calculator.service.CalculatorService;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/calculator")
 
 public class CalculatorController {
 
     private final CalculatorService calculatorService;
 
-    @GetMapping("/calculator")
+    @GetMapping
     public String welcome() {
         return "<mark><b>Добро пожаловать в калькулятор.</b></mark>";
     }
 
-    @GetMapping("/calculator/plus")
+    @GetMapping("/plus")
     public String plus(@RequestParam(name = "num1", required = false) Integer a,
                        @RequestParam(name = "num2", required = false) Integer b) {
         if(a == null || b == null) return "Не данны одно из двух параметров";
@@ -26,7 +28,7 @@ public class CalculatorController {
     return a + " + " + b + " = " + plus;
     }
 
-    @GetMapping("/calculator/minus")
+    @GetMapping("/minus")
     public String minus(@RequestParam(name = "num1", required = false) Integer a,
                        @RequestParam(name = "num2", required = false) Integer b) {
         if(a == null || b == null) return "Не данны одно из двух параметров";
@@ -34,7 +36,7 @@ public class CalculatorController {
     return a + " - " + b + " = " + minus;
     }
 
-    @GetMapping("/calculator/multiply")
+    @GetMapping("/multiply")
     public String multiply(@RequestParam(name = "num1", required = false) Integer a,
                        @RequestParam(name = "num2", required = false) Integer b) {
         if(a == null || b == null) return "Не данны одно из двух параметров";
@@ -42,7 +44,7 @@ public class CalculatorController {
     return a + " * " + b + " = " + multiply;
     }
 
-    @GetMapping("/calculator/share")
+    @GetMapping("/share")
     public String share(@RequestParam(name = "num1", required = false) Integer a,
                        @RequestParam(name = "num2", required = false) Integer b) {
         if(a == null || b == null) return "Не данны одно из двух параметров";
